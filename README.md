@@ -1,33 +1,21 @@
-# hackernews-async-ts
+# bot-core
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+基于 Egg.js 的<del>即将诞生的</del>机器人后台接口服务。
 
-## QuickStart
+## 背景
 
-### Development
+之前使用 Python 断断续续开发过一些 QQ 机器人的功能，后来因为一些变故导致最近想尝试通过 TypeScript 开发机器人，又由于没有一个相对成熟的框架，遂又回到 Python 去开发。仔细想想，如果不把业务逻辑耦合到具体的机器人实现中去，那不就可以复用各种各样的逻辑了吗？最好的方式应该就是通过 RESTful 接口去实现了。
 
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
-```
+说干就干，于是有了这么一个项目。
 
-Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
+## 功能说明
 
-### Deploy
+[x] 百度搜图
 
-```bash
-$ npm run tsc
-$ npm start
-```
+TODO
 
-### Npm Scripts
+[ ] 对接图灵机器人
 
-- Use `npm run lint` to check code style
-- Use `npm test` to run unit test
-- se `npm run clean` to clean compiled js at development mode once
+## 配套 SDK
 
-### Requirement
-
-- Node.js 8.x
-- Typescript 2.8+
+TODO
