@@ -19,3 +19,9 @@ TODO
 ## 配套 SDK
 
 TODO
+
+## Egg.js 踩坑
+
+### 项目初始化
+
+由于官方文档是通过 `npm init egg --type=ts` 来初始化 TypeScript 项目，而国内网络环境对于 npm 非常之不友好，故而导致初始化项目的时候都一度想放弃这个框架。最后在一个 [issue](https://github.com/eggjs/egg/issues/3916#issuecomment-526476973) 中找到了答案。
