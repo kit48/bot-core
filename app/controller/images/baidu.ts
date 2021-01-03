@@ -9,7 +9,7 @@ export default class ImagesBaiduController extends Controller {
   public async index() {
     const { ctx } = this;
     ctx.validate(queryRule, ctx.request.query);
-    ctx.body = await ctx.service.images.baidu.index.searchImages(ctx.request.query.word);
+    ctx.body = await ctx.service.images.baidu.index.findImages(ctx.request.query.word);
     ctx.status = 200;
   }
 }

@@ -49,7 +49,7 @@ export interface ImageItem {
   source_type: string;
 }
 
-export type PureImageItem = Pick<
+export type SimplifyImageItem = Pick<
   ImageItem,
   'thumbURL' | 'middleURL' | 'largeTnImageUrl' | 'replaceUrl' | 'is_gif' | 'fromPageTitle' | 'fromPageTitleEnc'
 >;

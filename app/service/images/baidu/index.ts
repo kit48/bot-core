@@ -1,6 +1,6 @@
 import { Service, Context } from 'egg';
 
-import { ImagesResult, PureImageItem } from './interfaces';
+import { ImagesResult, SimplifyImageItem } from './interfaces';
 
 export default class ImagesBiduService extends Service {
   SEARCH_API: string;
@@ -12,9 +12,10 @@ export default class ImagesBiduService extends Service {
     this.DOWNLOAD_API = 'https://image.baidu.com/search/down';
   }
 
-  public async searchImages(word: string) {
+  public async findImages(word: string) {
     const params = {
-      tn: 'resultjson_com',
+      // tn 字段说明：http://bitjoy.net/2015/08/13/baidu-image-downloader-python3-pyqt5-eric6-cx_freeze4/
+      tn: 'resultjson',
       ipn: 'rj',
       is: '',
       fp: 'result',
@@ -31,24 +32,33 @@ export default class ImagesBiduService extends Service {
       rn: '30',
     };
 
-    const result = await this.ctx.curl<ImagesResult>(this.SEARCH_API, {
+    const result = await this.ctx.curl<string>(this.SEARCH_API, {
       method: 'GET',
       data: params,
-      dataType: 'json',
+      dataType: 'text',
     });
 
-    this.ctx.logger.info(`query word, ${result.data.queryExt}`);
+    if (result.status === 200) {
+      // 修复 Trailing commas
+      const data: ImagesResult = JSON.parse(result.data.replace(/,}/g, '}'));
+      this.ctx.logger.info(`query word, ${data.queryExt}`);
 
-    const pureImageItems: PureImageItem[] = result.data.data.map(item => ({
-      thumbURL: item.thumbURL,
-      middleURL: item.middleURL,
-      largeTnImageUrl: item.largeTnImageUrl,
-      replaceUrl: item.replaceUrl,
-      is_gif: item.is_gif,
-      fromPageTitle: item.fromPageTitle,
-      fromPageTitleEnc: item.fromPageTitleEnc,
-    }));
+      if (data.displayNum > 0) {
+        const pureImageItems: SimplifyImageItem[] = data.data.map((item) => ({
+          thumbURL: item.thumbURL,
+          middleURL: item.middleURL,
+          objURL: item.objURL,
+          largeTnImageUrl: item.largeTnImageUrl,
+          replaceUrl: item.replaceUrl,
+          is_gif: item.is_gif,
+          fromPageTitle: item.fromPageTitle,
+          fromPageTitleEnc: item.fromPageTitleEnc,
+        }));
+        return pureImageItems;
+      }
+      this.ctx.throw(200, '无可用图片资源');
+    }
 
-    return pureImageItems;
+    this.ctx.throw(result.status, '百度搜图服务异常');
   }
 }
