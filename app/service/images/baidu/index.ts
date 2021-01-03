@@ -56,9 +56,9 @@ export default class ImagesBiduService extends Service {
         }));
         return pureImageItems;
       }
-      this.ctx.throw(200, '无可用图片资源');
+      this.ctx.throw(200, `未找到 [${word}] 相关图片 _(:3J∠)_`);
     }
 
-    this.ctx.throw(result.status, '百度搜图服务异常');
+    this.ctx.throw(result.status, '百度搜图服务异常 ╮(╯_╰)╭');
   }
 }
