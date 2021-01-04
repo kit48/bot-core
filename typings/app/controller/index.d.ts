@@ -4,12 +4,16 @@
 import 'egg';
 import ExportHome from '../../../app/controller/home';
 import ExportImagesBaidu from '../../../app/controller/images/baidu';
+import ExportTulingIndex from '../../../app/controller/tuling/index';
 
 declare module 'egg' {
   interface IController {
     home: ExportHome;
     images: {
       baidu: ExportImagesBaidu;
+    }
+    tuling: {
+      index: ExportTulingIndex;
     }
   }
 }
