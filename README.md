@@ -11,15 +11,24 @@
 ## 功能说明
 
 - [x] 百度搜图
+- [x] 对接图灵机器人
 
 TODO
 
-- [ ] 对接图灵机器人
-- [ ] 解析B站链接
+- [ ] 解析 B 站视频链接
 
 ## 配套 SDK
 
 TODO
+
+## 如何使用
+
+- 克隆仓库
+- 安装依赖
+- [功能配置](/config/config.demo.ts#L14)，相关 service 配置，如图灵机器人的 API key，配置完成完成后需要将文件重命名为 config.default.ts 以正确加载配置
+- 启动 `npm run start`
+- 关闭 `npm run stop`
+- 开发 `npm run dev`
 
 ## Egg.js 踩坑
 
