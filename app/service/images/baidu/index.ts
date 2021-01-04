@@ -4,12 +4,10 @@ import { ImagesResult, SimplifyImageItem } from './interfaces';
 
 export default class ImagesBiduService extends Service {
   SEARCH_API: string;
-  DOWNLOAD_API: string;
 
   constructor(ctx: Context) {
     super(ctx);
     this.SEARCH_API = 'https://image.baidu.com/search/acjson';
-    this.DOWNLOAD_API = 'https://image.baidu.com/search/down';
   }
 
   public async findImages(word: string) {
@@ -41,7 +39,7 @@ export default class ImagesBiduService extends Service {
     if (result.status === 200) {
       // 修复 Trailing commas
       const data: ImagesResult = JSON.parse(result.data.replace(/,}/g, '}'));
-      this.ctx.logger.info(`query word, ${data.queryExt}`);
+      this.ctx.logger.info(`query word: ${data.queryExt}`);
 
       if (data.displayNum > 0) {
         const pureImageItems: SimplifyImageItem[] = data.data.map((item) => ({
@@ -56,7 +54,8 @@ export default class ImagesBiduService extends Service {
         }));
         return pureImageItems;
       }
-      this.ctx.throw(200, `未找到 [${word}] 相关图片 _(:3J∠)_`);
+
+      return `未找到 [${word}] 相关图片 _(:3J∠)_`;
     }
 
     this.ctx.throw(result.status, '百度搜图服务异常 ╮(╯_╰)╭');
