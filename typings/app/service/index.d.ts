@@ -11,6 +11,8 @@ import ExportTulingIndex from '../../../app/service/tuling/index';
 import ExportTulingInterfaces from '../../../app/service/tuling/interfaces';
 import ExportImagesBaiduIndex from '../../../app/service/images/baidu/index';
 import ExportImagesBaiduInterfaces from '../../../app/service/images/baidu/interfaces';
+import ExportSnh48gTicketsIndex from '../../../app/service/snh48g/tickets/index';
+import ExportSnh48gTicketsInterfaces from '../../../app/service/snh48g/tickets/interfaces';
 
 declare module 'egg' {
   interface IService {
@@ -23,6 +25,12 @@ declare module 'egg' {
       baidu: {
         index: AutoInstanceType<typeof ExportImagesBaiduIndex>;
         interfaces: AutoInstanceType<typeof ExportImagesBaiduInterfaces>;
+      }
+    }
+    snh48g: {
+      tickets: {
+        index: AutoInstanceType<typeof ExportSnh48gTicketsIndex>;
+        interfaces: AutoInstanceType<typeof ExportSnh48gTicketsInterfaces>;
       }
     }
   }

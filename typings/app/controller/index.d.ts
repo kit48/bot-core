@@ -4,6 +4,7 @@
 import 'egg';
 import ExportHome from '../../../app/controller/home';
 import ExportImagesBaidu from '../../../app/controller/images/baidu';
+import ExportSnh48gTickets from '../../../app/controller/snh48g/tickets';
 import ExportTulingIndex from '../../../app/controller/tuling/index';
 
 declare module 'egg' {
@@ -11,6 +12,9 @@ declare module 'egg' {
     home: ExportHome;
     images: {
       baidu: ExportImagesBaidu;
+    }
+    snh48g: {
+      tickets: ExportSnh48gTickets;
     }
     tuling: {
       index: ExportTulingIndex;
