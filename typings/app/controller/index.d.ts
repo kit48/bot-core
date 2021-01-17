@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportHome from '../../../app/controller/home';
+import ExportBilibiliCovers from '../../../app/controller/bilibili/covers';
 import ExportImagesBaidu from '../../../app/controller/images/baidu';
 import ExportSnh48gTickets from '../../../app/controller/snh48g/tickets';
 import ExportTulingIndex from '../../../app/controller/tuling/index';
@@ -10,6 +11,9 @@ import ExportTulingIndex from '../../../app/controller/tuling/index';
 declare module 'egg' {
   interface IController {
     home: ExportHome;
+    bilibili: {
+      covers: ExportBilibiliCovers;
+    }
     images: {
       baidu: ExportImagesBaidu;
     }

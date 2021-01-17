@@ -7,4 +7,5 @@ export default (app: Application) => {
   router.get('/api/images/baidu', controller.images.baidu.index);
   router.get('/api/tuling', controller.tuling.index.index);
   router.get('/api/snh48g/tickets', controller.snh48g.tickets.index);
+  router.get('/api/bilibili/covers', controller.bilibili.covers.index);
 };

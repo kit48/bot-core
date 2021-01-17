@@ -9,6 +9,8 @@ type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? R
 import ExportTest from '../../../app/service/Test';
 import ExportTulingIndex from '../../../app/service/tuling/index';
 import ExportTulingInterfaces from '../../../app/service/tuling/interfaces';
+import ExportBilibiliCoversIndex from '../../../app/service/bilibili/covers/index';
+import ExportBilibiliCoversInterfaces from '../../../app/service/bilibili/covers/interfaces';
 import ExportImagesBaiduIndex from '../../../app/service/images/baidu/index';
 import ExportImagesBaiduInterfaces from '../../../app/service/images/baidu/interfaces';
 import ExportSnh48gTicketsIndex from '../../../app/service/snh48g/tickets/index';
@@ -20,6 +22,12 @@ declare module 'egg' {
     tuling: {
       index: AutoInstanceType<typeof ExportTulingIndex>;
       interfaces: AutoInstanceType<typeof ExportTulingInterfaces>;
+    }
+    bilibili: {
+      covers: {
+        index: AutoInstanceType<typeof ExportBilibiliCoversIndex>;
+        interfaces: AutoInstanceType<typeof ExportBilibiliCoversInterfaces>;
+      }
     }
     images: {
       baidu: {
