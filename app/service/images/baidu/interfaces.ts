@@ -51,8 +51,8 @@ export interface ImageItem {
 
 export type SimplifyImageItem = Pick<
   ImageItem,
-  'thumbURL' | 'middleURL' | 'largeTnImageUrl' | 'replaceUrl' | 'is_gif' | 'fromPageTitle' | 'fromPageTitleEnc'
->;
+  'thumbURL' | 'middleURL' | 'largeTnImageUrl' | 'replaceUrl' | 'fromPageTitle' | 'fromPageTitleEnc'
+> & { isGif: number };
 
 export interface ImagesResult {
   queryEnc: string;

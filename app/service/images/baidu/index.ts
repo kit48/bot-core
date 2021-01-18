@@ -48,7 +48,7 @@ export default class ImagesBiduService extends Service {
           objURL: item.objURL,
           largeTnImageUrl: item.largeTnImageUrl,
           replaceUrl: item.replaceUrl,
-          is_gif: item.is_gif,
+          isGif: item.is_gif,
           fromPageTitle: item.fromPageTitle,
           fromPageTitleEnc: item.fromPageTitleEnc,
         }));
