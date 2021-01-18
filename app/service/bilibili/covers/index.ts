@@ -22,7 +22,7 @@ export default class BilibiliCoversService extends Service {
         }
       }
     }
-    return null;
+    return url;
   }
 
   getBv(url: string) {
