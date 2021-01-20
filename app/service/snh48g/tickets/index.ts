@@ -18,7 +18,15 @@ export default class Snh48gTicketsService extends Service {
         accept: '*/*',
       },
       dataType: 'text',
-    });
+
+      /**
+       * 为什么使用：https://github.com/eggjs/egg/issues/4583
+       * 
+       * 另，urllib.RequestOptions 类型未定义 false
+       */
+      agent: false,
+      httpsAgent: false,
+    } as any);
 
     if (result.status === 200) {
       /** 先解码再转换 URL 链接，形如 https:\\/\\/m.48.cn\\/tickets\\/item\\/3877 */
